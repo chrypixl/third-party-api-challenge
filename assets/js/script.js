@@ -10,6 +10,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 })
 
 
+
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
 
