@@ -2,23 +2,20 @@
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 
-const myModal = document.getElementById('myModal')
-const myInput = document.getElementById('myInput')
-
-myModal.addEventListener('shown.bs.modal', () => {
-  myInput.focus()
-})
-
 
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
-
+  const = task {
+    title: taskTitle,
+    dueDate: #taskDueDate,
+    description: #taskDescription
+  }
 }
 
 // Todo: create a function to create a task card
 function createTaskCard(task) {
-
+  const todoCards = document.getElementById('todo-cards');
 }
 
 // Todo: create a function to render the task list and make cards draggable
