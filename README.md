@@ -40,3 +40,10 @@ The following animation demonstrates the application functionality:
 
 ![A user adds three tasks to the task board and changes the state of two of them to in progress and then completion. The user then deletes the two cards in the done column.](./Assets/05-third-party-apis-homework-demo.gif)
 
+Github Link: https://github.com/chrypixl/third-party-api-challenge.git
+Page Link: https://chrypixl.github.io/third-party-api-challenge
+
+
+## Notes
+
+Most acceptance criteria were not accomplished. I will continue to work on this challenge until all criteria are met or the submission has been graded.
