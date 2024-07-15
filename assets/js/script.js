@@ -1,27 +1,74 @@
 // Retrieve tasks and nextId from localStorage
-let taskList = JSON.parse(localStorage.getItem("tasks"));
-let nextId = JSON.parse(localStorage.getItem("nextId"));
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let nextId = JSON.parse(localStorage.getItem("nextId")) || 1;
+
+$(document).ready(function() {
+  $("#taskDueDate").datepicker({
+  showOn: "focus"
+  });
+  renderTasks();
+});
 
 
 
 // Todo: create a function to generate a unique task id
-function generateTaskId() {
-  const = task {
+$('#taskForm').submit(function(event) {
+  event.preventDefault();
+  
+  const taskTitle = $('#taskTitle').val();
+  const taskDueDate = $('#taskDueDate').val();
+  const taskDescription = $('#taskDescription').val();
+
+  const task = {
+    id: nextId,
     title: taskTitle,
-    dueDate: #taskDueDate,
-    description: #taskDescription
-  }
-}
+    dueDate: taskDueDate,
+    description: taskDescription
+  };
+
+  tasks.push(task);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem("nextId", nextId + 1);
+
+  createTaskCard(taskTitle, taskDueDate, taskDescription);
+  $('#taskTitle').val('');
+  $('#taskDueDate').val('');
+  $('#taskDescription').val('');
+  renderTasks();
+});
 
 // Todo: create a function to create a task card
-function createTaskCard(task) {
-  const todoCards = document.getElementById('todo-cards');
-}
+function createTaskCard(title, dueDate, description) {
+$('#tasks').append(
+  `<div class="card">
+    <div class="card-header">
+      <h2 class="card-title">${title}</h2>
+    </div>
+    <div class="card-body">
+      <h3 class="date">${dueDate}</h3>
+      <p class="card-content">${description}</p>
+    </div>
+  </div>
+  `);
+};
+
+
+
 
 // Todo: create a function to render the task list and make cards draggable
-function renderTaskList() {
+function renderTasks() {
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  tasks.forEach(task => {
+    createTaskCard(task.title, task.description, task.dueDate);
+  });
 
-}
+  $('.card').draggable({
+    revert: 'invalid',
+    cursor: 'move',
+    containment: 'document',
+    scroll: false
+  });
+};
 
 // Todo: create a function to handle adding a new task
 function handleAddTask(event){

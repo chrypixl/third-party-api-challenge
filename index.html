@@ -32,7 +32,7 @@
               <h2 class="modal-title">Add Task</h2>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="taskForm">
                     <div class="mb-3">
                       <label for="taskTitle" class="form-label">Task Title</label>
                       <input type="text" class="form-control" id="taskTitle">
@@ -51,7 +51,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Add Task</button>
+              <button type="submit" class="btn btn-primary" id="task-btn" data-bs-dismiss="modal">Add Task</button>
             </div>
           </div>
         </div>
@@ -98,14 +98,6 @@
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
     integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
-
-    <script>
-        $(document).ready(function() {
-        $("#taskDueDate").datepicker({
-        showOn: "focus"
-        });
-    });
-    </script>
   <script src="./assets/js/script.js"></script>
 </body>
 
