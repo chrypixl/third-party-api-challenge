@@ -1,5 +1,4 @@
-// Retrieve tasks and nextId from localStorage
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let nextId = JSON.parse(localStorage.getItem("nextId")) || 1;
 
 $(document).ready(function() {
@@ -7,14 +6,17 @@ $(document).ready(function() {
   showOn: "focus"
   });
   renderTasks();
+  $('#taskForm').on("submit", submitHandler);
 });
 
 
 
 // Todo: create a function to generate a unique task id
-$('#taskForm').submit(function(event) {
+function submitHandler(event) {
   event.preventDefault();
   
+  console.log("clicked");
+
   const taskTitle = $('#taskTitle').val();
   const taskDueDate = $('#taskDueDate').val();
   const taskDescription = $('#taskDescription').val();
@@ -24,32 +26,31 @@ $('#taskForm').submit(function(event) {
     title: taskTitle,
     dueDate: taskDueDate,
     description: taskDescription
+    //ToDo: Status
   };
 
   tasks.push(task);
   localStorage.setItem("tasks", JSON.stringify(tasks));
   localStorage.setItem("nextId", nextId + 1);
 
-  createTaskCard(taskTitle, taskDueDate, taskDescription);
+  createTaskCard(task);
   $('#taskTitle').val('');
   $('#taskDueDate').val('');
   $('#taskDescription').val('');
   renderTasks();
-});
+};
 
 // Todo: create a function to create a task card
-function createTaskCard(title, dueDate, description) {
-$('#tasks').append(
-  `<div class="card">
+function createTaskCard(task) {
+return `<div class="card">
     <div class="card-header">
-      <h2 class="card-title">${title}</h2>
+      <h2 class="card-title">${task.title}</h2>
     </div>
     <div class="card-body">
-      <h3 class="date">${dueDate}</h3>
-      <p class="card-content">${description}</p>
+      <h3 class="date">${task.dueDate}</h3>
+      <p class="card-content">${task.description}</p>
     </div>
-  </div>
-  `);
+  </div>`;
 };
 
 
@@ -58,8 +59,10 @@ $('#tasks').append(
 // Todo: create a function to render the task list and make cards draggable
 function renderTasks() {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  const todoList = $("#todo-cards");
+  todoList.empty();
   tasks.forEach(task => {
-    createTaskCard(task.title, task.description, task.dueDate);
+    todoList.append(createTaskCard(task));
   });
 
   $('.card').draggable({
@@ -69,6 +72,10 @@ function renderTasks() {
     scroll: false
   });
 };
+
+/*renderTasks() {
+
+}*/
 
 // Todo: create a function to handle adding a new task
 function handleAddTask(event){

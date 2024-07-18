@@ -26,36 +26,36 @@
     </div>
     <!-- Todo: Create a modal with a form to add tasks -->
     <modal class="modal" id="formModal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title">Add Task</h2>
-            </div>
-            <div class="modal-body">
-                <form id="taskForm">
-                    <div class="mb-3">
-                      <label for="taskTitle" class="form-label">Task Title</label>
-                      <input type="text" class="form-control" id="taskTitle">
-                    </div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title">Add Task</h2>
+          </div>
+          <div class="modal-body">
+            <form id="taskForm">
+              <div class="mb-3">
+                <label for="taskTitle" class="form-label">Task Title</label>
+                <input type="text" class="form-control" id="taskTitle">
+              </div>
 
-                    <div class="mb-3">
-                      <label for="taskDueDate" class="form-label">Task Due Date</label>
-                      <input type="text" class="form-control" id="taskDueDate">
-                    </div>
+              <div class="mb-3">
+                <label for="taskDueDate" class="form-label">Task Due Date</label>
+                <input type="text" class="form-control" id="taskDueDate">
+              </div>
 
-                    <div class="mb-3">
-                        <label for="taskDescription" class="form-label">Task Description</label>
-                        <input type="text" class="form-control" id="taskDescription">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" id="task-btn" data-bs-dismiss="modal">Add Task</button>
-            </div>
+              <div class="mb-3">
+                <label for="taskDescription" class="form-label">Task Description</label>
+                <input type="text" class="form-control" id="taskDescription">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="task-btn" data-bs-dismiss="modal">Add Task</button>
+              </div>
+            </form>
           </div>
         </div>
-    </modal> 
+      </div>
+    </modal>
 
     <div class="row swim-lanes text-center justify-content-between">
       <div class="col-12 col-lg-4 d-flex">
@@ -77,16 +77,16 @@
             <div id="in-progress-cards"></div>
           </div>
         </div>
+      </div>
+      <div class="col-12 col-lg-4 d-flex">
+        <div id="done" class="card border-light mb-3 lane flex-grow-1">
+          <div class="card-header bg-white">
+            <h2 class="card-title mb-1">Done</h2>
+          </div>
+          <div class="card-body bg-light">
+            <div id="done-cards"></div>
+          </div>
         </div>
-        <div class="col-12 col-lg-4 d-flex">
-          <div id="done" class="card border-light mb-3 lane flex-grow-1">
-            <div class="card-header bg-white">
-              <h2 class="card-title mb-1">Done</h2>
-            </div>
-            <div class="card-body bg-light">
-              <div id="done-cards"></div>
-          </div>
-          </div>
       </div>
     </div>
   </div>
