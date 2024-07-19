@@ -14,8 +14,6 @@ $(document).ready(function() {
 // Todo: create a function to generate a unique task id
 function submitHandler(event) {
   event.preventDefault();
-  
-  console.log("clicked");
 
   const taskTitle = $('#taskTitle').val();
   const taskDueDate = $('#taskDueDate').val();
@@ -26,7 +24,6 @@ function submitHandler(event) {
     title: taskTitle,
     dueDate: taskDueDate,
     description: taskDescription
-    //ToDo: Status
   };
 
   tasks.push(task);
@@ -50,6 +47,9 @@ return `<div class="card">
       <h3 class="date">${task.dueDate}</h3>
       <p class="card-content">${task.description}</p>
     </div>
+    <div>
+      <button type="button" class="btn btn-delete" id="delete-btn" data-bs-dismiss="modal">Delete Task</button>
+    </div>  
   </div>`;
 };
 
@@ -73,19 +73,13 @@ function renderTasks() {
   });
 };
 
-/*renderTasks() {
-
-}*/
-
 // Todo: create a function to handle adding a new task
-function handleAddTask(event){
 
-}
 
 // Todo: create a function to handle deleting a task
-function handleDeleteTask(event){
-
-}
+$(document).on("click", ".btn-delete", function() {
+  $(this).closest(".card").remove();
+});
 
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
